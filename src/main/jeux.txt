@@ -1,0 +1,22 @@
+Classe Card :
+Représente une carte avec une couleur (pique, trèfle, cœur, carreau) et une valeur (2 à As).
+Les méthodes printColor et printValue affichent la couleur et la valeur de la carte.
+
+Classe Deck :
+Crée un paquet de cartes standard (sans jokers).
+Inclut toutes les combinaisons de couleurs et de valeurs.
+
+Classe Hand :
+Représente la main d'un joueur, avec des cartes tirées d'un paquet.
+Calcule la combinaison actuelle de la main (par exemple, paire, brelan, etc.).
+La méthode displayHand affiche les cartes de la main.
+
+Classe Game :
+Gère un jeu entre deux joueurs.
+Détermine le gagnant en comparant les combinaisons des mains.
+
+Énumération Combinaison :
+Définit les différentes combinaisons possibles dans le jeu de poker.
+
+Classe principale Main :
+Initialise le jeu et affiche le résultat.

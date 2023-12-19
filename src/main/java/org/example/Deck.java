@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
-    List<Card> cards;
+    public List<Card> cards;
 
     public Deck() {
-        this.cards = new ArrayList();
+        this.cards = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j < 15; j++) {

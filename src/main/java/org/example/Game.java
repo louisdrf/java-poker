@@ -5,7 +5,7 @@ public class Game {
     Hand player1;
 
     Hand player2;
-    Hand winner;
+    public Hand winner;
 
     public Game(Hand player1, Hand player2) {
         this.player1 = player1;

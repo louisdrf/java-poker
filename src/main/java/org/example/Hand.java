@@ -4,8 +4,10 @@ import java.util.*;
 
 public class Hand {
 
-    String owner;
-    public List<Card> cards;
+    public String owner;
+    //public List<Card> cards;
+    public List<Card> cards ;
+
     private Map<Integer, Integer> mapValues;
     private Map<Integer, Integer> mapColours;
     public int current_combinaison = Combinaison.HIGHCARD.ordinal();
@@ -13,9 +15,16 @@ public class Hand {
     public int combinaison_high_card_value;
     public int combinaison_second_high_card_value; // in case of double pair or full
 
+    public Hand(String player) {
+        this.cards = new ArrayList<>();
+        this.mapValues = new HashMap<>();
+        this.mapColours = new HashMap<>();
+        this.owner = "player";
+        this.combinaison_second_high_card_value = -1;
+    }
     public Hand(List<Card> deck, String playername) {
             this.owner = playername;
-            this.cards = new ArrayList();
+            this.cards = new ArrayList<>();
             this.mapValues = new HashMap();
             this.mapColours = new HashMap();
             this.combinaison_second_high_card_value = -1;
@@ -53,6 +62,21 @@ public class Hand {
                 }
             }
         }
+    }
+
+    public void setCards(List<Card> newCards) {
+        this.cards = new ArrayList<>(newCards);
+        this.mapValues.clear(); // Réinitialisez mapValues
+        this.mapColours.clear(); // Réinitialisez mapColours
+
+        // Recalculez les valeurs et les couleurs basées sur les nouvelles cartes
+        for (Card card : this.cards) {
+            this.mapValues.merge(card.value, 1, Integer::sum);
+            this.mapColours.merge(card.colour, 1, Integer::sum);
+        }
+        this.sortCards();
+        this.checkCombinaison();
+        this.checkColour();
     }
 
     public void checkCombinaison() {
@@ -198,14 +222,3 @@ public class Hand {
 }
 
 
-enum Combinaison {
-    HIGHCARD,
-    PAIR,
-    DOUBLE_PAIR,
-    THREE_OF,
-    STRAIGHT,
-    FLUSH,
-    FULL,
-    FOUR_OF,
-    STRAIGHT_FLUSH
-}
