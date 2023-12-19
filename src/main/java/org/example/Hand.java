@@ -22,6 +22,16 @@ public class Hand {
         this.owner = "player";
         this.combinaison_second_high_card_value = -1;
     }
+    public void manageCard(){
+        this.sortCards();
+        this.checkCombinaison();
+        this.checkColour();
+        this.determineHighCardFromMap();
+    }
+
+    public void determineHighCardFromMap() {
+        this.high_card_value = Collections.max(mapValues.keySet());
+    }
     public Hand(List<Card> deck, String playername) {
             this.owner = playername;
             this.cards = new ArrayList<>();
@@ -36,16 +46,11 @@ public class Hand {
                 cards.add(card);
                 this.mapValues.merge(card.value, 1, Integer::sum);
                 this.mapColours.merge(card.colour, 1, Integer::sum);
-
-                if(card.value > this.high_card_value) {
-                    this.high_card_value = card.value;
-                }
             }
-            this.sortCards();
 
-            this.checkCombinaison();
-            this.checkColour();
+            this.manageCard();
     }
+
 
     public void sortCards() {
         this.cards.sort(Comparator.comparingInt(Card::getValue));
@@ -73,11 +78,12 @@ public class Hand {
         for (Card card : this.cards) {
             this.mapValues.merge(card.value, 1, Integer::sum);
             this.mapColours.merge(card.colour, 1, Integer::sum);
+            System.out.println("Après ajout de la carte " + card.value + ": " + mapValues); // Débogage
         }
-        this.sortCards();
-        this.checkCombinaison();
-        this.checkColour();
+        manageCard();
+
     }
+
 
     public void checkCombinaison() {
 

@@ -14,6 +14,7 @@ public class HandTest {
     public void handInitializationTest() {
         Deck deck = new Deck();
         Hand hand = new Hand(deck.cards, "player");
+        hand.manageCard();
         assertEquals("La main doit contenir 5 cartes", 5, hand.cards.size());
     }
 
@@ -28,6 +29,8 @@ public class HandTest {
                 new Card(3, 9),
                 new Card(0, 11) // Valet de pique comme carte haute
         ));
+        hand.manageCard();
+
         assertEquals("Doit être une carte haute", Combinaison.HIGHCARD.ordinal(), hand.current_combinaison);
     }
 
@@ -56,6 +59,8 @@ public class HandTest {
                 new Card(3, 6),
                 new Card(0, 9)
         ));
+        hand.manageCard();
+
         assertEquals("Doit être une double paire", Combinaison.DOUBLE_PAIR.ordinal(), hand.current_combinaison);
     }
 
@@ -70,6 +75,7 @@ public class HandTest {
                 new Card(3, 4), // 4 de carreau
                 new Card(0, 9)  // 9 de pique
         ));
+        hand.manageCard();
 
         assertEquals("La main devrait être un brelan", Combinaison.THREE_OF.ordinal(), hand.current_combinaison);
     }
@@ -85,6 +91,7 @@ public class HandTest {
                 new Card(3, 7), // 7 de carreau
                 new Card(0, 8)  // 8 de pique
         ));
+        hand.manageCard();
 
         assertEquals("La main devrait être une suite", Combinaison.STRAIGHT.ordinal(), hand.current_combinaison);
     }
@@ -100,6 +107,7 @@ public class HandTest {
                 new Card(0, 9), // 9 de pique
                 new Card(0, 11) // Valet de pique
         ));
+        hand.manageCard();
 
         assertEquals("La main devrait être un flush", Combinaison.FLUSH.ordinal(), hand.current_combinaison);
     }
@@ -115,6 +123,7 @@ public class HandTest {
                 new Card(3, 4), // 4 de carreau
                 new Card(0, 4)  // 4 de pique
         ));
+        hand.manageCard();
 
         assertEquals("La main devrait être un full house", Combinaison.FULL.ordinal(), hand.current_combinaison);
     }
@@ -129,6 +138,8 @@ public class HandTest {
                 new Card(3, 8),
                 new Card(0, 4)
         ));
+        hand.manageCard();
+
         assertEquals("Doit être un carré", Combinaison.FOUR_OF.ordinal(), hand.current_combinaison);
     }
 
@@ -142,6 +153,8 @@ public class HandTest {
                 new Card(0, 8),
                 new Card(0, 9)
         ));
+        hand.manageCard();
+
         assertEquals("Doit être une quinte flush", Combinaison.STRAIGHT_FLUSH.ordinal(), hand.current_combinaison);
     }
 

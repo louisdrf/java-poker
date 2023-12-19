@@ -11,10 +11,15 @@ public class GameTest {
     @Test
     public void gameWinnerTest() {
         Deck deck = new Deck();
-        Hand hand1 = new Hand(deck.cards, "player1");
-        Hand hand2 = new Hand(deck.cards, "player2");
-        Game game = new Game(hand1, hand2);
+        Hand player1Hand = new Hand(deck.cards, "player1");
+        Hand player2Hand = new Hand(deck.cards, "player2");
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
+        Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
+
         assertNotNull("Un gagnant doit être déterminé", game.winner);
         // Plus de tests pour des scénarios spécifiques...
     }
@@ -24,6 +29,9 @@ public class GameTest {
         Deck deck = new Deck();
         Hand player1Hand = new Hand(deck.cards, "player1");
         Hand player2Hand = new Hand(deck.cards, "player2");
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
 
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
@@ -42,6 +50,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 2), new Card(1, 3), new Card(2, 4), new Card(3, 8), new Card(0, 6)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -59,6 +70,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 2), new Card(1, 2), new Card(2, 5), new Card(3, 7), new Card(0, 9)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -75,6 +89,9 @@ public class GameTest {
         Hand player2Hand = new Hand("player2");
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 4), new Card(1, 4), new Card(2, 7), new Card(3, 7), new Card(0, 10)));
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
 
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
@@ -96,6 +113,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 4), new Card(1, 4), new Card(2, 4), new Card(3, 3), new Card(0, 8)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -114,6 +134,9 @@ public class GameTest {
         Hand player2Hand = new Hand("player2");
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 10), new Card(1, 11), new Card(2, 12), new Card(3, 13), new Card(0, 14)));
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
 
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
@@ -135,6 +158,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(1, 7), new Card(1, 9), new Card(1, 10), new Card(1, 11), new Card(1, 12)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -154,6 +180,9 @@ public class GameTest {
         Hand player2Hand = new Hand("player2");
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 6), new Card(1, 6), new Card(2, 6), new Card(3, 4), new Card(0, 4)));
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
 
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
@@ -175,6 +204,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 7), new Card(1, 7), new Card(2, 7), new Card(3, 7), new Card(0, 5)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -195,6 +227,9 @@ public class GameTest {
         player2Hand.setCards(Arrays.asList(
                 new Card(3, 9), new Card(3, 10), new Card(3, 11), new Card(3, 12), new Card(3, 13)));
 
+        player1Hand.manageCard();
+        player2Hand.manageCard();
+
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
 
@@ -214,6 +249,9 @@ public class GameTest {
         Hand player2Hand = new Hand("player2");
         player2Hand.setCards(Arrays.asList(
                 new Card(0, 4), new Card(1, 4), new Card(2, 8), new Card(3, 8), new Card(0, 13)));
+
+        player1Hand.manageCard();
+        player2Hand.manageCard();
 
         Game game = new Game(player1Hand, player2Hand);
         game.checkWinner();
